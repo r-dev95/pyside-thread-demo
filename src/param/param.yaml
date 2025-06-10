@@ -1,0 +1,15 @@
+# -------------------------------------------------------------------
+# parameter file (train)
+#
+# Note:
+#   - Do not use '~/' in the path.
+#   - A list must be specified in list format even if it has only one element.
+# -------------------------------------------------------------------
+# -----------------------------------------------
+# Overwrite command line arguments.
+# -----------------------------------------------
+# log level (idx=0: stream handler, idx=1: file handler)
+# (DEBUG: 10, INFO: 20, WARNING: 30, ERROR: 40, CRITICAL: 50)
+level: [10, 10]
+# directory path (data save)
+result: result

@@ -1,0 +1,26 @@
+[project]
+name = "pyside-thread-app-templete"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "moviepy>=2.2.1",
+    "pydantic>=2.11.5",
+    "pyside6>=6.9.0",
+    "pyyaml>=6.0.2",
+    "tomlkit>=0.13.2",
+    "tzdata>=2025.2",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
+    "pytest>=8.3.5",
+    "pytest-mock>=3.14.1",
+    "types-pyyaml>=6.0.12.20250516",
+]
+docs = [
+    "sphinx>=8.2.3",
+    "sphinx-autobuild>=2024.10.3",
+    "sphinx-intl>=2.3.1",
+    "sphinx-rtd-theme>=3.0.2",
+]
