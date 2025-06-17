@@ -6,9 +6,8 @@ from logging import getLogger
 
 from PySide6.QtCore import QObject
 
-from lib.common.types import MsgID, ThreadID, ThreadMsg
+from lib.common.types import MsgID, ParamLog, ThreadID, ThreadMsg
 from lib.components.base import Worker
-from lib.settings import ParamLog
 
 PARAM_LOG = ParamLog()
 LOGGER = getLogger(PARAM_LOG.NAME)
