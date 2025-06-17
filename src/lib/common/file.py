@@ -10,7 +10,7 @@ import tomlkit
 import yaml
 
 from lib.common.process import recursive_replace
-from lib.settings import ParamLog
+from lib.common.types import ParamLog
 
 PARAM_LOG = ParamLog()
 LOGGER = getLogger(PARAM_LOG.NAME)
@@ -31,7 +31,7 @@ def dump_json(data: Any, fpath: Path, mode: str = 'w', **kwargs) -> None:  # noq
         json.dump(obj=data, fp=f, **kwargs)
 
 
-def load_json(fpath: Path, mode: str = 'rb') -> dict[str, Any]:
+def load_json(fpath: Path, mode: str = 'rb', **kwargs) -> dict[str, Any]:  # noqa: D417
     """Loads json files.
 
     Args:
@@ -42,14 +42,14 @@ def load_json(fpath: Path, mode: str = 'rb') -> dict[str, Any]:
         dict[str, Any]: loaded data.
     """
     with fpath.open(mode=mode) as f:
-        data = json.load(fp=f)
+        data = json.load(fp=f, **kwargs)
     return data
 
 
 # -----------------------------------------------
 # yaml
 # -----------------------------------------------
-def dump_yaml(data: Any, fpath: Path, mode: str = 'w') -> None:
+def dump_yaml(data: Any, fpath: Path, mode: str = 'w', **kwargs) -> None:  # noqa: D417
     """Writes yaml files.
 
     Args:
@@ -58,7 +58,7 @@ def dump_yaml(data: Any, fpath: Path, mode: str = 'w') -> None:
         mode (str): write mode.
     """
     with fpath.open(mode=mode) as f:
-        yaml.dump(data=data, stream=f, sort_keys=False)
+        yaml.dump(data=data, stream=f, sort_keys=False, **kwargs)
 
 
 def load_yaml(fpath: Path, mode: str = 'rb') -> dict[str, Any]:
@@ -79,7 +79,7 @@ def load_yaml(fpath: Path, mode: str = 'rb') -> dict[str, Any]:
 # -----------------------------------------------
 # toml
 # -----------------------------------------------
-def dump_toml(data: Any, fpath: Path, mode: str = 'w') -> None:
+def dump_toml(data: Any, fpath: Path, mode: str = 'w', **kwargs) -> None:  # noqa: D417
     """Writes toml files.
 
     Args:
@@ -89,7 +89,7 @@ def dump_toml(data: Any, fpath: Path, mode: str = 'w') -> None:
     """
     data = recursive_replace(data=data, fm_val=None, to_val='None')
     with fpath.open(mode=mode) as f:
-        tomlkit.dump(data=data, fp=f, sort_keys=False)
+        tomlkit.dump(data=data, fp=f, **kwargs)
 
 
 def load_toml(fpath: Path, mode: str = 'rb') -> dict[str, Any]:

@@ -4,7 +4,7 @@
 from logging import getLogger
 from typing import Any
 
-from lib.settings import ParamLog
+from lib.common.types import ParamLog
 
 PARAM_LOG = ParamLog()
 LOGGER = getLogger(PARAM_LOG.NAME)
@@ -56,3 +56,18 @@ def recursive_replace(data: Any, fm_val: Any, to_val: Any) -> Any:
     if data == fm_val:
         return to_val
     return data
+
+
+def sec_to_hms(time: float) -> tuple[int, int, int, float]:
+    """Convert seconds to hh:mm:ss:ms format.
+
+    Args:
+        time (float): The number of seconds.
+
+    Returns:
+        tuple[int, int, int, float]: The tuple of hh, mm, ss, ms.
+    """
+    hh, mm = divmod(time, 3600)
+    mm, ss = divmod(mm, 60)
+    ss, ms = divmod(ss, 1)
+    return hh, mm, ss, ms

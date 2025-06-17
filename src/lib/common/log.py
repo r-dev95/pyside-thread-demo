@@ -5,7 +5,7 @@ from logging import Formatter, Logger, StreamHandler
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
-from lib.settings import ParamLog
+from lib.common.types import ParamLog
 
 
 class SetLogging:
@@ -27,8 +27,10 @@ class SetLogging:
 
         self.make_directory()
         self.set_level()
-        self.set_stream_handler()
-        self.set_file_handler()
+        if self.param.HANDLER[self.param.SH]:
+            self.set_stream_handler()
+        if self.param.HANDLER[self.param.FH]:
+            self.set_file_handler()
 
     def make_directory(self) -> None:
         """Make the directory to store log files.

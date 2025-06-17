@@ -8,9 +8,8 @@ from typing import override
 
 from PySide6.QtCore import QObject, Slot
 
-from lib.common.types import ThreadID, ThreadMsg
+from lib.common.types import ParamLog, ThreadID, ThreadMsg
 from lib.components.base import Worker
-from lib.settings import ParamLog
 
 PARAM_LOG = ParamLog()
 LOGGER = getLogger(PARAM_LOG.NAME)
