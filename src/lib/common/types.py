@@ -2,8 +2,8 @@
 """
 
 import enum
+import logging
 import zoneinfo
-from logging import CRITICAL, DEBUG, ERROR, INFO, WARNING
 from typing import Any, ClassVar
 
 from pydantic import BaseModel, Field
@@ -37,8 +37,8 @@ class ParamLog(BaseModel):
     }
     #: ClassVar[dict[str, int]]: The log level.
     LEVEL: ClassVar[dict[str, int]] = {
-        SH: DEBUG,
-        FH: DEBUG,
+        SH: logging.DEBUG,
+        FH: logging.DEBUG,
     }
     #: str: The file path.
     FPATH: str = 'log/log.txt'
