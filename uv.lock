@@ -652,7 +652,7 @@ wheels = [
 ]
 
 [[package]]
-name = "pyside-thread-app-templete"
+name = "pyside-thread-demo"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

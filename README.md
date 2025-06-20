@@ -2,12 +2,12 @@
     README
  -->
 
-# Pyside Thread App Templete
+# Pyside Thread Demo
 
 <!-- [![English](https://img.shields.io/badge/English-018EF5.svg?labelColor=d3d3d3&logo=readme)](./README.md) -->
 <!-- [![Japanese](https://img.shields.io/badge/Japanese-018EF5.svg?labelColor=d3d3d3&logo=readme)](./README_JA.md) -->
 [![Japanese](https://img.shields.io/badge/Japanese-018EF5.svg?labelColor=d3d3d3&logo=readme)](./README.md)
-[![license](https://img.shields.io/github/license/r-dev95/pyside-thread-app-templete)](./LICENSE)
+[![license](https://img.shields.io/github/license/r-dev95/pyside-thread-demo)](./LICENSE)
 [![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
@@ -18,7 +18,7 @@
 [![Pydantic](https://img.shields.io/badge/Pydantic-ff0055.svg?labelColor=d3d3d3&logo=pydantic&logoColor=ff0055)](https://github.com/pydantic/pydantic)
 [![Pyside](https://img.shields.io/badge/Pyside-neogreen.svg?labelColor=d3d3d3&logo=qt)](https://www.qt.io/qt-for-python)
 
-本リポジトリでは、pysideの`QThread`を用いたGUIアプリのテンプレートを定義しています。
+本リポジトリでは、pysideの`QThread`を用いたGUIアプリのデモを示します。
 
 下記のことを意識して実装しています。
 
@@ -31,7 +31,7 @@
 ### githubからインストール
 
 ```bash
-git clone https://github.com/r-dev95/pyside-thread-app-templete.git
+git clone https://github.com/r-dev95/pyside-thread-demo.git
 ```
 
 ### 仮想環境の構築
@@ -41,7 +41,7 @@ git clone https://github.com/r-dev95/pyside-thread-app-templete.git
 pythonの開発環境がまだ整っていない方は、[こちら](https://github.com/r-dev95/env-python)。
 
 ```bash
-cd pyside-thread-app-templete/
+cd pyside-thread-demo/
 uv sync
 ```
 
@@ -52,7 +52,7 @@ cd src
 python app.py
 ```
 
-## 画面
+## 画面と機能
 
 ![アプリ画面](docs/image/demo.gif)
 
@@ -67,7 +67,7 @@ python app.py
 
 `pyside6-designer`でuiファイルを作成し、`pyside6-uic`で変換したpythonファイルを使用します。
 
-## 機能
+## 構成
 
 ![クラス構成](docs/image/diagram.png)
 
