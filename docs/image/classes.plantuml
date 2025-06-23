@@ -1,0 +1,72 @@
+@startuml classes
+!define MAIN_CLASS_COLOR #a8c9ea
+
+set namespaceSeparator none
+class "app.MainWindow" as app.MainWindow MAIN_CLASS_COLOR {
+  log_bg_color : dict
+  params : dict[str, Any]
+  router
+  thread_id : MAIN
+  threads : dict[str, Worker]
+  ui
+  add_log(msg: LogMsg) -> None
+  closeEvent(event: QEvent) -> None
+  log(msg: str, level: LogLevel) -> None
+  receive_msg(msg: ThreadMsg) -> None
+  send_msg(to_id: ThreadID, msg_id: MsgID, data: Any) -> None
+  setup() -> None
+  start_threads() -> None
+  stop_threads() -> None
+}
+class "lib.components.base.MassageMixin" as lib.components.base.MassageMixin MAIN_CLASS_COLOR {
+  sig_send
+  {abstract}receive_msg(msg: ThreadMsg) -> None
+  {abstract}send_msg(to_id: ThreadID, msg_id: MsgID, data: Any) -> None
+}
+class "lib.components.base.Worker" as lib.components.base.Worker MAIN_CLASS_COLOR {
+  is_running
+  thread_id : Optional[ThreadID]
+  log(msg: str | list[str], level: LogLevel) -> None
+  run() -> None
+  send_msg(to_id: ThreadID, msg_id: MsgID, data: Any) -> None
+  {abstract}task() -> None
+}
+class "lib.components.layout.Ui_Dialog" as lib.components.layout.Ui_Dialog MAIN_CLASS_COLOR {
+  button_start
+  button_stop
+  checkbox_auto_scroll
+  frame
+  gridLayout
+  gridLayout_2
+  label
+  list_widget_log
+  retranslateUi(Dialog)
+  setupUi(Dialog)
+}
+class "lib.components.router.Router" as lib.components.router.Router MAIN_CLASS_COLOR {
+  is_running : bool
+  thread_id : ROUTER
+  threads : dict[str, Worker]
+  register_thread(tid: str, thread: Worker) -> None
+  route_msg(msg: ThreadMsg) -> None
+  task() -> None
+}
+class "lib.components.thread1.Thread1" as lib.components.thread1.Thread1 MAIN_CLASS_COLOR {
+  thread_id : THREAD_1
+  receive_msg(msg: ThreadMsg) -> None
+  task() -> None
+}
+class "lib.components.thread2.Thread2" as lib.components.thread2.Thread2 MAIN_CLASS_COLOR {
+  thread_id : THREAD_2
+
+  receive_msg(msg: ThreadMsg) -> None
+  task() -> None
+}
+app.MainWindow --|> lib.components.base.MassageMixin
+lib.components.base.Worker --|> lib.components.base.MassageMixin
+lib.components.router.Router --|> lib.components.base.Worker
+lib.components.thread1.Thread1 --|> lib.components.base.Worker
+lib.components.thread2.Thread2 --|> lib.components.base.Worker
+lib.components.layout.Ui_Dialog --* app.MainWindow : ui
+lib.components.router.Router --* app.MainWindow : router
+@enduml
